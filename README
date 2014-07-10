@@ -2,7 +2,7 @@ NAME
     Data::Check::Structure - Check structure of data
 
 VERSION
-    This document describes version 0.01 of Data::Check::Structure (from
+    This document describes version 0.02 of Data::Check::Structure (from
     Perl distribution Data-Check-Structure), released on 2014-07-10.
 
 SYNOPSIS

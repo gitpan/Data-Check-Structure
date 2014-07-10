@@ -9,7 +9,7 @@ our @ISA = qw(Exporter);
 our @EXPORT_OK = qw(is_aos is_aoa is_aoaos is_aoh is_aohos is_hos);
 
 our $DATE = '2014-07-10'; # DATE
-our $VERSION = '0.01'; # VERSION
+our $VERSION = '0.02'; # VERSION
 
 sub is_aos {
     my ($data, $opts) = @_;
@@ -43,9 +43,10 @@ sub is_aoaos {
     my $max = $opts->{max};
 
     return 0 unless ref($data) eq 'ARRAY';
+    my $aos_opts = {max=>$max};
     for my $i (0..@$data-1) {
         last if defined($max) && $i >= $max;
-        return 0 unless is_aos($data->[$i], {max=>$max});
+        return 0 unless is_aos($data->[$i], $aos_opts);
     }
     1;
 }
@@ -69,9 +70,10 @@ sub is_aohos {
     my $max = $opts->{max};
 
     return 0 unless ref($data) eq 'ARRAY';
+    my $hos_opts = {max=>$max};
     for my $i (0..@$data-1) {
         last if defined($max) && $i >= $max;
-        return 0 unless is_hos($data->[$i]);
+        return 0 unless is_hos($data->[$i], $hos_opts);
     }
     1;
 }
@@ -105,7 +107,7 @@ Data::Check::Structure - Check structure of data
 
 =head1 VERSION
 
-This document describes version 0.01 of Data::Check::Structure (from Perl distribution Data-Check-Structure), released on 2014-07-10.
+This document describes version 0.02 of Data::Check::Structure (from Perl distribution Data-Check-Structure), released on 2014-07-10.
 
 =head1 SYNOPSIS
 

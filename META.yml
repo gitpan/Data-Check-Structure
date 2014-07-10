@@ -22,7 +22,7 @@ resources:
   bugtracker: https://rt.cpan.org/Public/Dist/Display.html?Name=Data-Check-Structure
   homepage: https://metacpan.org/release/Data-Check-Structure
   repository: git://github.com/sharyanto/perl-Data-Check-Structure.git
-version: '0.01'
+version: '0.02'
 x_Dist_Zilla:
   perl:
     version: '5.018002'
