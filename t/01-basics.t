@@ -7,8 +7,16 @@ use warnings;
 use Test::More 0.98;
 
 use Data::Check::Structure qw(
-                                 is_aos is_aoa is_aoaos is_aoh
-                                 is_aohos is_hos
+                                 is_aoa
+                                 is_aoaos
+                                 is_aoh
+                                 is_aohos
+                                 is_aos
+                                 is_hoa
+                                 is_hoaos
+                                 is_hoh
+                                 is_hohos
+                                 is_hos
                          );
 
 subtest is_aos => sub {
@@ -50,7 +58,39 @@ subtest is_hos => sub {
     ok(  is_hos({}) );
     ok(  is_hos({a=>1, b=>2}) );
     ok( !is_hos({a=>1, b=>[]}) );
-    #ok(  is_hos({a=>1, b=>2, c=>3, d=>[]}, {max=>3}) ); # depends on hash key random ordering
+    #XXX test for max options will depend on hash key random ordering
+};
+
+subtest is_hoa => sub {
+    ok(  is_hoa({}) );
+    ok(  is_hoa({a=>[]}) );
+    ok( !is_hoa({a=>1}) );
+    #XXX test for max options will depend on hash key random ordering
+};
+
+subtest is_hoaos => sub {
+    ok(  is_hoaos({}) );
+    ok(  is_hoaos({a=>[]}) );
+    ok(  is_hoaos({a=>[1]}) );
+    ok( !is_hoaos({a=>1}) );
+    ok( !is_hoaos({a=>[{}]}) );
+    #XXX test for max options will depend on hash key random ordering
+};
+
+subtest is_hoh => sub {
+    ok(  is_hoh({}) );
+    ok(  is_hoh({a=>{}}) );
+    ok( !is_hoh({a=>1}) );
+    #XXX test for max options will depend on hash key random ordering
+};
+
+subtest is_hohos => sub {
+    ok(  is_hohos({}) );
+    ok(  is_hohos({a=>{}}) );
+    ok(  is_hohos({a=>{b=>1}}) );
+    ok( !is_hohos({a=>1}) );
+    ok( !is_hohos({a=>{b=>[]}}) );
+    #XXX test for max options will depend on hash key random ordering
 };
 
 DONE_TESTING:

@@ -2,8 +2,8 @@ NAME
     Data::Check::Structure - Check structure of data
 
 VERSION
-    This document describes version 0.02 of Data::Check::Structure (from
-    Perl distribution Data-Check-Structure), released on 2014-07-10.
+    This document describes version 0.03 of Data::Check::Structure (from
+    Perl distribution Data-Check-Structure), released on 2014-07-14.
 
 SYNOPSIS
 DESCRIPTION
@@ -74,6 +74,50 @@ FUNCTIONS
      is_hos({a=>1, b=>2});                         # true
      is_hos({a=>1, b=>[]});                        # false
      is_hos({a=>1, b=>2, c=>3, d=>[]}, {max=>3});  # true (or false, depending on random hash key ordering)
+
+    Known options: "max" (maximum number of items to check, undef means
+    check all items).
+
+  is_hoa($data, \%opts) => bool
+    Check that data is a hash of arrays. Examples:
+
+     is_hoa({}) );       # true
+     is_hoa({a=>[]}) );  # true
+     is_hoa({a=>1}) );   # false
+
+    Known options: "max" (maximum number of items to check, undef means
+    check all items).
+
+  is_hoaos($data, \%opts) => bool
+    Check that data is a hash of arrays of scalars. Examples:
+
+     is_hoaos({}) );         # true
+     is_hoaos({a=>[]}) );    # true
+     is_hoaos({a=>[1]}) );   # true
+     is_hoaos({a=>1}) );     # false
+     is_hoaos({a=>[{}]}) );  # false
+
+    Known options: "max" (maximum number of items to check, undef means
+    check all items).
+
+  is_hoh($data, \%opts) => bool
+    Check that data is a hash of hashes. Examples:
+
+     is_hoh({}) );       # true
+     is_hoh({a=>{}}) );  # true
+     is_hoh({a=>1}) );   # false
+
+    Known options: "max" (maximum number of items to check, undef means
+    check all items).
+
+  is_hohos($data, \%opts) => bool
+    Check that data is a hash of hashes of scalrs. Examples:
+
+     is_hohos({}) );            # true
+     is_hohos({a=>{}}) );       # true
+     is_hohos({a=>{b=>1}}) );   # true
+     is_hohos({a=>1}) );        # false
+     is_hohos({a=>{b=>[]}}) );  # false
 
     Known options: "max" (maximum number of items to check, undef means
     check all items).
